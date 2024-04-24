@@ -1,0 +1,17 @@
+html, body, .pdf-viewer {
+    height: 100%;
+  }
+
+.docs-title {
+    text-align: center;
+    font-weight: 100;
+}
+
+.pdf-viewer {
+    display: flex;
+    flex-direction: column;
+}
+
+.embed {
+    flex-grow: 1;
+}
