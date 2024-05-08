@@ -53,3 +53,47 @@ mat-tree {
 //     color: white;
 // }
 
+.trendcard-container {
+    margin: 20px;
+  }
+
+.trend-card {
+    width: 250px;
+}
+
+.more-button {
+    position: absolute;
+    top: 16px;
+    right: 10px;
+}
+
+.rounded-chip{
+    border-radius: 50px;
+    background-color: #c6f5cf;
+    width: 76px;
+    font-size: 13px;
+    text-align: center;
+    color: #30A245;
+    // margin-top: 12px;
+}
+
+.trendcard-title{
+    font-size: 16px;
+}
+
+.trendcard-content{
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 18px;
+}
+
+.trendcard-time{
+    color: #959595;
+    margin-top: 20px;
+}
+
+.trendcard-timeline{
+    position: absolute;
+    bottom: 16px;
+    right: 10px;
+}

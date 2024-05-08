@@ -12,6 +12,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatTreeFlatDataSource, MatTreeFlattener, MatTreeModule } from '@angular/material/tree';
 import { FlatTreeControl } from '@angular/cdk/tree';
+import { TrendcardComponent } from './components/trendcard/trendcard.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatCardModule } from '@angular/material/card';
+import { MatChipsModule } from '@angular/material/chips';
 
 
 interface UserNode {
@@ -22,31 +26,31 @@ interface UserNode {
 const TREE_DATA: UserNode[] = [
   {
     name: 'Ministries',
-    children: [{name: 'Apple'}, {name: 'Banana'}, {name: 'Fruit loops'}],
+    children: [{ name: 'Apple' }, { name: 'Banana' }, { name: 'Fruit loops' }],
   },
   {
     name: 'Parastatals',
-    children: [{name: 'Apple'}, {name: 'Banana'}, {name: 'Fruit loops'}],
+    children: [{ name: 'Apple' }, { name: 'Banana' }, { name: 'Fruit loops' }],
   },
   {
     name: 'Primary Schools',
-    children: [{name: 'Apple'}, {name: 'Banana'}, {name: 'Fruit loops'}],
+    children: [{ name: 'Apple' }, { name: 'Banana' }, { name: 'Fruit loops' }],
   },
   {
     name: 'Secondary Schools',
-    children: [{name: 'Apple'}, {name: 'Banana'}, {name: 'Fruit loops'}],
+    children: [{ name: 'Apple' }, { name: 'Banana' }, { name: 'Fruit loops' }],
   },
   {
     name: 'Universities',
-    children: [{name: 'Apple'}, {name: 'Banana'}, {name: 'Fruit loops'}],
+    children: [{ name: 'Apple' }, { name: 'Banana' }, { name: 'Fruit loops' }],
   },
   {
     name: 'TVETs',
-    children: [{name: 'Apple'}, {name: 'Banana'}, {name: 'Fruit loops'}],
+    children: [{ name: 'Apple' }, { name: 'Banana' }, { name: 'Fruit loops' }],
   },
   {
     name: 'Hospitals',
-    children: [{name: 'Apple'}, {name: 'Banana'}, {name: 'Fruit loops'}],
+    children: [{ name: 'Apple' }, { name: 'Banana' }, { name: 'Fruit loops' }],
   },
 ];
 /** Flat node with expandable and level information */
@@ -59,11 +63,12 @@ interface TreeFlatNode {
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterModule, RouterOutlet, DocsComponent, MatSidenavModule, MatFormFieldModule, MatSelectModule, MatButtonModule, MatListModule, MatIconModule, MatDividerModule, MatTreeModule],
+  imports: [CommonModule, RouterModule, RouterOutlet, DocsComponent, TrendcardComponent, MatSidenavModule, MatFormFieldModule, MatSelectModule, MatButtonModule, MatListModule, MatIconModule, MatDividerModule, MatTreeModule, MatMenuModule, MatCardModule, MatChipsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
+  title = 'docview'
 
   private _transformer = (node: UserNode, level: number) => {
     return {
@@ -91,5 +96,5 @@ export class AppComponent {
   }
 
   hasChild = (_: number, node: TreeFlatNode) => node.expandable;
-  
+
 }
