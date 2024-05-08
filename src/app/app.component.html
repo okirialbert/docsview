@@ -1,20 +1,60 @@
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * Delete the template below * * * * * * * * * -->
-<!-- * * * * * * * to get started with your project! * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<mat-sidenav-container class="drawer-container">
+    <mat-sidenav class="side-drawer" #drawer mode="side" opened="true">
 
-<app-docs></app-docs>
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+        <div class="drawer-item-container">
+            <img class="image-container" src="./../assets/kcb.png" width="200px" alt="">
+            <mat-divider class="drawer-divider"></mat-divider>
+            <mat-nav-list class="drawer-nav-list">
+                <mat-list-item>
+                    <mat-icon matListItemIcon>home</mat-icon>
+                    <a matListItemTitle routerLink="/dash">Dashboard</a>
+                </mat-list-item>
+                <mat-list-item>
+                    <mat-icon matListItemIcon>receipt_long</mat-icon>
+                    <a matListItemTitle routerLink="/docs">Balances</a>
+                </mat-list-item>
+
+                <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+
+                    <!-- This is the tree node for expandable nodes -->
+                    <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
+                        <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'Toggle ' + node.name">
+                            <mat-icon class="mat-icon-rtl-mirror">
+                                {{treeControl.isExpanded(node) ? 'arrow_drop_down' : 'arrow_right'}}
+                            </mat-icon>
+                        </button>
+                        {{node.name}}
+                    </mat-tree-node>
+                </mat-tree>
 
 
-<router-outlet></router-outlet>
+
+
+                <mat-list-item>
+                    <mat-icon matListItemIcon>settings</mat-icon>
+                    <a matListItemTitle routerLink="/settings">Settings</a>
+                </mat-list-item>
+            </mat-nav-list>
+            <div class="signout">
+                <mat-divider class="drawer-divider"></mat-divider>
+                <mat-nav-list class="drawer-nav-list">
+                    <mat-list-item>
+                        <mat-icon matListItemIcon>logout</mat-icon>
+                        <a matListItemTitle routerLink="/signout">Sign Out</a>
+                    </mat-list-item>
+                </mat-nav-list>
+    
+            </div>
+        </div>
+
+        
+
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <router-outlet></router-outlet>
+
+
+
+        <!-- <button mat-raised-button (click)="drawer.toggle()">Toggle drawer</button> -->
+    </mat-sidenav-content>
+</mat-sidenav-container>
