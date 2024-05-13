@@ -11,11 +11,15 @@
                 </mat-list-item>
                 <mat-list-item>
                     <mat-icon matListItemIcon>receipt_long</mat-icon>
-                    <a matListItemTitle routerLink="/docs">Balances</a>
+                    <a matListItemTitle routerLink="/balances">Balances</a>
                 </mat-list-item>
 
                 <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
-
+                    <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+                        <!-- use a disabled button to provide padding for tree leaf -->
+                        <button mat-icon-button disabled></button>
+                        {{node.name}}
+                    </mat-tree-node>
                     <!-- This is the tree node for expandable nodes -->
                     <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
                         <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'Toggle ' + node.name">
@@ -26,9 +30,10 @@
                         {{node.name}}
                     </mat-tree-node>
                 </mat-tree>
-
-
-
+                <mat-list-item>
+                    <mat-icon matListItemIcon>explore</mat-icon>
+                    <a matListItemTitle routerLink="/settings">County Distribution</a>
+                </mat-list-item>
 
                 <mat-list-item>
                     <mat-icon matListItemIcon>settings</mat-icon>
@@ -47,8 +52,6 @@
             </div>
         </div>
 
-
-
     </mat-sidenav>
     <mat-sidenav-content>
         <!-- <div class="trendcards">
@@ -56,11 +59,34 @@
             <app-trendcard></app-trendcard>
 
         </div> -->
+        <h1 class="welcome-header-msg">Welcome back, Paul Russo</h1>
         <div class="trendcard-container">
+            @for (trend of trendCategories; track trend) {
             <mat-card class="trend-card">
                 <mat-card-header>
                     <mat-card-title>
-                        <div class="trendcard-title">Total Accounts</div>                        
+                        <div class="trendcard-title">{{trend.name}}</div>
+                        <div class="more-button rounded-chip">{{trend.pchange}}%</div>
+                    </mat-card-title>
+                </mat-card-header>
+                <mat-card-content class="trend-card-content">
+                    <div class="trendcard-content">{{trend.value}}</div>
+                    <div class="trendcard-footer">
+                        <div class="trendcard-time">
+                            {{trend.date}}
+                        </div>
+                        <div class="trendcard-timeline">
+                            Chart
+
+                        </div>
+
+                    </div>
+                </mat-card-content>
+            </mat-card> }
+            <mat-card class="trend-card">
+                <mat-card-header>
+                    <mat-card-title>
+                        <div class="trendcard-title">Total Accounts</div>
                         <div class="more-button rounded-chip">-100%</div>
                     </mat-card-title>
                 </mat-card-header>
@@ -71,14 +97,75 @@
                             This Month
                         </div>
                         <div class="trendcard-timeline">
-                            Here
+                            Chart
 
                         </div>
-                    
+
                     </div>
                 </mat-card-content>
             </mat-card>
         </div>
+        <form class="dashboard-filters" [formGroup]="dashboard">
+            <mat-form-field>
+                <!-- <mat-label>Enter a date range</mat-label> -->
+                <mat-date-range-input [rangePicker]="picker">
+                    <input matStartDate formControlName="start" placeholder="Start date">
+                    <input matEndDate formControlName="end" placeholder="End date">
+                </mat-date-range-input>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker></mat-date-range-picker>
+
+                @if (dashboard.controls.start.hasError('matStartDateInvalid')) {
+                <mat-error>Invalid start date</mat-error>
+                }
+                @if (dashboard.controls.end.hasError('matEndDateInvalid')) {
+                <mat-error>Invalid end date</mat-error>
+                }
+            </mat-form-field>
+            <mat-form-field>
+                <mat-select [(value)]="selectedIndustry">
+                    <!-- [formControl]="industries" multiple > -->
+                    @for (industry of industriesList; track industry) {
+                    <mat-option [value]="industry">{{industry}}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-select [(value)]="selectedAccountType">
+                    @for (accountType of accountTypeList; track accountType) {
+                    <mat-option [value]="accountType">{{accountType}}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-select  [(value)]="selectedAccountStatusType">
+                    @for (accountStatus of accountStatusTypeList; track accountStatus) {
+                    <mat-option [value]="accountStatus">{{accountStatus}}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-select  [(value)]="selectedCurrencyType">
+                    @for (currency of currenciesList; track currency) {
+                    <mat-option [value]="currency">{{currency}}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-select  [(value)]="selectedCounty">
+                    @for (county of countiesList; track county) {
+                    <mat-option [value]="county">{{county}}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+
+        </form>
+
+
+        <!-- <app-trendcard chartType="doughnut"> -->
+        <!-- <canvas baseChart [data]="doughnutChartData" [type]="doughnutChartType">
+            </canvas> -->
+        <!-- </app-trendcard> -->
 
         <router-outlet></router-outlet>
 

@@ -25,6 +25,10 @@ mat-drawer-content {
     margin: 4vh;
 }
 
+.welcome-header-msg{
+    margin-left: 20px;
+}
+
 .side-drawer {
     padding: 0;
     width: 256px;
@@ -55,10 +59,14 @@ mat-tree {
 
 .trendcard-container {
     margin: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-flow: row wrap;
   }
 
 .trend-card {
-    width: 250px;
+    min-width: 250px;
+    margin: 10px 15px;
 }
 
 .more-button {
@@ -96,4 +104,12 @@ mat-tree {
     position: absolute;
     bottom: 16px;
     right: 10px;
+}
+
+.dashboard-filters{
+    margin: 40px 0 30px 30px
+}
+
+.dashboard-filters > mat-form-field {
+    margin: 0 20px 0 0;
 }
