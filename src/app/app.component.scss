@@ -5,7 +5,7 @@
     // border: 1px solid #555;
 }
 
-.drawer-item-container{
+.drawer-item-container {
     display: flex;
     flex-direction: column;
 }
@@ -25,7 +25,7 @@ mat-drawer-content {
     margin: 4vh;
 }
 
-.welcome-header-msg{
+.welcome-header-msg {
     margin-left: 20px;
 }
 
@@ -44,8 +44,14 @@ a {
     text-decoration: none;
 }
 
-.drawer-nav-list{
+.drawer-nav-list {
     padding: 0;
+    color: white;
+
+}
+
+mat-list-item>*, a, mat-icon, mat-tree-node{
+    color: #FCFCFC;
 }
 
 mat-tree {
@@ -62,7 +68,7 @@ mat-tree {
     display: flex;
     flex-direction: row;
     flex-flow: row wrap;
-  }
+}
 
 .trend-card {
     min-width: 250px;
@@ -75,7 +81,7 @@ mat-tree {
     right: 10px;
 }
 
-.rounded-chip{
+.rounded-chip {
     border-radius: 50px;
     background-color: #c6f5cf;
     width: 76px;
@@ -85,31 +91,31 @@ mat-tree {
     // margin-top: 12px;
 }
 
-.trendcard-title{
+.trendcard-title {
     font-size: 16px;
 }
 
-.trendcard-content{
+.trendcard-content {
     font-size: 20px;
     font-weight: bold;
     margin-top: 18px;
 }
 
-.trendcard-time{
+.trendcard-time {
     color: #959595;
     margin-top: 20px;
 }
 
-.trendcard-timeline{
+.trendcard-timeline {
     position: absolute;
     bottom: 16px;
     right: 10px;
 }
 
-.dashboard-filters{
+.dashboard-filters {
     margin: 40px 0 30px 30px
 }
 
-.dashboard-filters > mat-form-field {
+.dashboard-filters>mat-form-field {
     margin: 0 20px 0 0;
 }

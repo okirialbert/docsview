@@ -1,102 +1,64 @@
-<table ngSkipHydration>
-    <tr class="table-header">
-      <th>Customer Name</th>
-      <th>Customer Code</th>
-      <th>Total Accounts</th>
-      <th>Currency</th>
-      <th>Available Balance</th>
-      <th>Deposits</th>
-      <th>Loans</th>
-    </tr>
-    <tr>
-      <td>Mahaya Health Centre</td>
-      <td>102424</td>
-      <td>3</td>
-      <td>KES</td>
-      <td>410.50 M</td>
-      <td>811 M</td>
-      <td>10.50 M</td>
-    </tr>
-    <tr>
-      <td>Kenya Railways Corporation</td>
-      <td>213535</td>
-      <td>5</td>
-      <td>USD</td>
-      <td>38.77 B</td>
-      <td>76.44 B</td>
-      <td>8.77 B</td>
-    </tr>
-    <tr>
-      <td>Kenya Rural Roads Authority</td>
-      <td>324646</td>
-      <td>9</td>
-      <td>KES</td>
-      <td>5.60 B</td>
-      <td>10.2 B</td>
-      <td>60 M</td>
-    </tr>
-    <tr>
-      <td>Civil Servants Housing Scheme Fund</td>
-      <td>435757</td>
-      <td>1</td>
-      <td>KES</td>
-      <td>3.7 B</td>
-      <td>7.4 B</td>
-      <td>700 M</td>
-    </tr>
-    <tr>
-      <td>Kenya Power & Lighting Company</td>
-      <td>546868</td>
-      <td>8</td>
-      <td>USD</td>
-      <td>14.7 B</td>
-      <td>29.4 B</td>
-      <td>4.70 B</td>
-    </tr>
-    <tr>
-      <td>Agriculture Settlement Fund</td>
-      <td>098765</td>
-      <td>2</td>
-      <td>KES</td>
-      <td>7.49 B</td>
-      <td>15.94 B</td>
-      <td>490 M</td>
-    </tr>
-    <tr>
-      <td>Communications Authority of Kenya</td>
-      <td>432109</td>
-      <td>7</td>
-      <td>KES</td>
-      <td>4.42 B</td>
-      <td>8.84 B</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>Kenya Electricity Transmission</td>
-      <td>876543</td>
-      <td>3</td>
-      <td>KES</td>
-      <td>4.26 B</td>
-      <td>8.52 B</td>
-      <td>260 M</td>
-    </tr>
-    <tr>
-      <td>National Drought Management Authority</td>
-      <td>210987</td>
-      <td>6</td>
-      <td>KES</td>
-      <td>3.98 B</td>
-      <td>7.96 B</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>Kenya National Highways Authority</td>
-      <td>654321</td>
-      <td>5</td>
-      <td>KES</td>
-      <td>1.74 B</td>
-      <td>3.48 B</td>
-      <td>40 M</td>
+<div class="customer-table">
+  <mat-form-field ngSkipHydration>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+  </mat-form-field>
+</div>
+<div class="customer-table mat-elevation-z8">
+
+  <table mat-table [dataSource]="dataSource">
+
+    <!-- customerName Column -->
+    <ng-container matColumnDef="customerName">
+      <th mat-header-cell *matHeaderCellDef> Customer Name </th>
+      <td mat-cell *matCellDef="let col"> {{col.customerName}} </td>
+    </ng-container>
+
+    <!-- customerCode Column -->
+    <ng-container matColumnDef="customerCode">
+      <th mat-header-cell *matHeaderCellDef> Customer Code </th>
+      <td mat-cell *matCellDef="let col"> {{col.customerCode}} </td>
+    </ng-container>
+
+    <!-- totalAccounts Column -->
+    <ng-container matColumnDef="totalAccounts">
+      <th mat-header-cell *matHeaderCellDef> Total Accounts </th>
+      <td mat-cell *matCellDef="let col"> {{col.totalAccounts}} </td>
+    </ng-container>
+
+    <!-- currency Column -->
+    <ng-container matColumnDef="currency">
+      <th mat-header-cell *matHeaderCellDef> Currency </th>
+      <td mat-cell *matCellDef="let col"> {{col.currency}} </td>
+    </ng-container>
+
+    <!-- availableBalance Columns-->
+    <ng-container matColumnDef="availableBalance">
+      <th mat-header-cell *matHeaderCellDef> Available Balance </th>
+      <td mat-cell *matCellDef="let col"> {{col.availableBalance}} </td>
+    </ng-container>
+
+    <!-- deposits Column-->
+    <ng-container matColumnDef="deposits">
+      <th mat-header-cell *matHeaderCellDef> Deposits </th>
+      <td mat-cell *matCellDef="let col"> {{col.deposits}} </td>
+    </ng-container>
+
+    <!-- loans Column -->
+    <ng-container matColumnDef="loans">
+      <th mat-header-cell *matHeaderCellDef> Loans </th>
+      <td mat-cell *matCellDef="let col"> {{col.loans}} </td>
+    </ng-container>
+
+    <tr class="table-header" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
     </tr>
   </table>
-  
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page">
+  </mat-paginator>
+</div>

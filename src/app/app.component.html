@@ -7,7 +7,7 @@
             <mat-nav-list class="drawer-nav-list">
                 <mat-list-item>
                     <mat-icon matListItemIcon>home</mat-icon>
-                    <a matListItemTitle routerLink="/dash">Dashboard</a>
+                    <a matListItemTitle routerLink="/">Dashboard</a>
                 </mat-list-item>
                 <mat-list-item>
                     <mat-icon matListItemIcon>receipt_long</mat-icon>
@@ -138,21 +138,21 @@
                 </mat-select>
             </mat-form-field>
             <mat-form-field>
-                <mat-select  [(value)]="selectedAccountStatusType">
+                <mat-select [(value)]="selectedAccountStatusType">
                     @for (accountStatus of accountStatusTypeList; track accountStatus) {
                     <mat-option [value]="accountStatus">{{accountStatus}}</mat-option>
                     }
                 </mat-select>
             </mat-form-field>
             <mat-form-field>
-                <mat-select  [(value)]="selectedCurrencyType">
+                <mat-select [(value)]="selectedCurrencyType">
                     @for (currency of currenciesList; track currency) {
                     <mat-option [value]="currency">{{currency}}</mat-option>
                     }
                 </mat-select>
             </mat-form-field>
             <mat-form-field>
-                <mat-select  [(value)]="selectedCounty">
+                <mat-select [(value)]="selectedCounty">
                     @for (county of countiesList; track county) {
                     <mat-option [value]="county">{{county}}</mat-option>
                     }
