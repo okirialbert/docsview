@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { DocsComponent } from './docs/docs.component';
@@ -21,6 +21,8 @@ import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import { FormGroup, FormControl, FormsModule, ReactiveFormsModule, FormBuilder } from '@angular/forms';
 import { JsonPipe } from '@angular/common';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MediaMatcher } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 interface UserNode {
   name: string;
@@ -71,19 +73,22 @@ export interface TrendCategory {
   date: string | Date;
 }
 
-interface Food {
-  value: string;
-  viewValue: string;
+interface sidenavOption {
+  fixed: boolean;
+  top: number;
+  bottom: number;
 }
+
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterModule, RouterOutlet, DocsComponent, TrendcardComponent, MatSidenavModule, MatFormFieldModule, MatSelectModule, MatButtonModule, MatListModule, MatIconModule, MatDividerModule, MatTreeModule, MatMenuModule, MatCardModule, MatChipsModule, BaseChartDirective, MatDatepickerModule, FormsModule, ReactiveFormsModule, JsonPipe],
+  imports: [CommonModule, RouterModule, RouterOutlet, DocsComponent, TrendcardComponent, MatSidenavModule, MatFormFieldModule, MatSelectModule, MatButtonModule, MatListModule, MatIconModule, MatDividerModule, MatTreeModule, MatMenuModule, MatCardModule, MatChipsModule, BaseChartDirective, MatDatepickerModule, FormsModule, ReactiveFormsModule, JsonPipe, MatToolbarModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
+export class AppComponent implements OnDestroy {
   title = 'docview'
 
   private _transformer = (node: UserNode, level: number) => {
@@ -115,8 +120,19 @@ export class AppComponent {
 
   ];
 
-  constructor(private _formBuilder: FormBuilder) {
+  sidenavOptions: sidenavOption = { fixed: true, bottom: 0, top: 0 }
+  private _mobileQueryListener: () => void;
+  mobileQuery: MediaQueryList;
+
+  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
     this.dataSource.data = TREE_DATA;
+    this.mobileQuery = media.matchMedia('(max-width: 600px)');
+    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
+    this.mobileQuery.addListener(this._mobileQueryListener);
+  }
+
+  ngOnDestroy(): void {
+    this.mobileQuery.removeListener(this._mobileQueryListener);
   }
 
   hasChild = (_: number, node: TreeFlatNode) => node.expandable;
@@ -153,12 +169,5 @@ export class AppComponent {
 
   });
 
-  foods: Food[] = [
-    {value: 'steak-0', viewValue: 'Steak'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'},
-  ];
- 
-  selectedFood = this.foods[2].value;
 
 }
