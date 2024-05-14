@@ -5,6 +5,10 @@
     // border: 1px solid #555;
 }
 
+h1.app-name {
+    margin-left: 8px;
+  }
+
 .is-mobile .page-toolbar {
     position: fixed;
     /* Make sure the toolbar will stay on top of the content as it scrolls past. */
@@ -56,7 +60,7 @@ a {
 
 }
 
-mat-list-item>*, a, mat-icon, mat-tree-node{
+mat-list-item>*, a, mat-tree-node{
     color: #FCFCFC;
 }
 
