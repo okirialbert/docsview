@@ -34,4 +34,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ![Balances page](./docs/entities.png)
 
 ### Single Entity Page
-![Balances page](./docs/balances.png)
+![Single entity page](./docs/balances.png)
+
+### Replicated PDF docs Page
+![Replicated PDF docs page](./docs/docs.png)
