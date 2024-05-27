@@ -28,10 +28,10 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Screenshot
 
-![PDF viewer page](./src/assets/docsview.png)
+![PDF viewer page](./docs/docsview.png)
 
 ### Entities/Dashboard Page
-![Balances page](./src/assets/entities.png)
+![Balances page](./docs/entities.png)
 
 ### Single Entity Page
-![Balances page](./src/assets/balances.png)
+![Balances page](./docs/balances.png)
