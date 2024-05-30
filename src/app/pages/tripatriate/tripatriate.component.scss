@@ -1,20 +1,27 @@
+.container {
+    margin: 40px 15vw;
+    /* Add margin to the body for better spacing */
+}
+
 .page-header {
     text-align: center;
     margin-bottom: 20px;
 }
 
-.page-header h1 {
+.page-header h1,
+.page-header h2 {
     margin: 0;
 }
 
 .agreement-parties {
     margin-bottom: 20px;
-    text-align: center;
 }
 
 .agreement-parties .party {
-    display: inline-block;
-    margin: 0 20px;
+    display: block;
+    margin-left: 40px;
+    /* Indent each party */
+    margin-bottom: 10px;
 }
 
 .agreement-title {
@@ -34,6 +41,7 @@
 
 .paragraph {
     margin-bottom: 10px;
+    text-align: justify;
 }
 
 .clause-number {

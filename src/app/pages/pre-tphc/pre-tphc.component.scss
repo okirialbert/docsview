@@ -1,6 +1,14 @@
+.container{
+    margin: 40px 15vw;
+}
+
 .header {
     text-align: center;
     margin-bottom: 20px;
+}
+
+.date{
+    margin-bottom: 10px;
 }
 
 .sender {
@@ -36,7 +44,7 @@
 
 .signature {
     margin-top: 30px;
-    text-align: center;
+    text-align: left;
 }
 
 .signature-name {

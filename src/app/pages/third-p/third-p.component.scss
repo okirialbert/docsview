@@ -1,5 +1,5 @@
-body {
-    font-family: Arial, sans-serif;
+.container {
+    margin: 40px 15vw;
 }
 
 .header {
@@ -8,8 +8,6 @@ body {
 }
 
 .ref-date {
-    display: flex;
-    justify-content: space-between;
     margin-bottom: 10px;
 }
 
@@ -33,15 +31,21 @@ body {
 
 .signature {
     margin-top: 30px;
-    text-align: center;
+    text-align: left;
 }
 
 .sender-details {
     margin-top: 10px;
     text-align: center;
+    display: flex;
+    flex-direction: row;
 }
 
-.sender-details .detail {
-    display: block;
-    margin-bottom: 3px;
+.detail {
+    margin-right: 5px;
+}
+
+ .sm {
+    margin: 0;
+    font-size: 11px;
 }

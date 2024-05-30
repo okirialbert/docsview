@@ -1,11 +1,23 @@
+.container{
+    margin: 40px 15vw;
+}
+
 .header {
     text-align: center;
     margin-bottom: 20px;
 }
 
 .date {
-    text-align: right;
     margin-bottom: 10px;
+}
+
+.parties {
+    display: flex;
+    flex-direction: row;
+}
+
+.spacer {
+    flex: 1 1 auto;
 }
 
 .recipient {
@@ -13,6 +25,7 @@
 }
 
 .sender {
+    text-align: right;
     margin-bottom: 20px;
 }
 
