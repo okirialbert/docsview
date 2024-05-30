@@ -1,0 +1,74 @@
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.date {
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+.recipient {
+    margin-bottom: 10px;
+}
+
+.sender {
+    margin-bottom: 20px;
+}
+
+.sender-details {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.sender-address {
+    text-align: left;
+}
+
+.sender-contact {
+    text-align: right;
+}
+
+.subject {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.request-details {
+    margin-bottom: 20px;
+}
+
+.request-details-item {
+    margin-bottom: 5px;
+}
+
+.request-details-item-title {
+    font-weight: bold;
+}
+
+.request-details-item-content {
+    margin-left: 20px;
+}
+
+.request {
+    margin-bottom: 10px;
+}
+
+.request-item {
+    margin-bottom: 5px;
+}
+
+.request-item-content {
+    margin-left: 20px;
+}
+
+.signature {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.cc {
+    margin-top: 10px;
+    text-align: center;
+}
